@@ -1,0 +1,30 @@
+services:
+  # A Docker web service
+  - type: web
+    name: webdis
+    runtime: docker
+    plan: individual
+    repo: https://github.com/Dan-Popescu/esgiRenderNodeExo
+    rootDir: webdis
+
+databases:
+  - name: database
+    databaseName: database 
+    user: dbManager 
+
+  - key: POSTGRESS_DATABASE_HOST
+      fromDatabase:
+        name: database
+        property: host
+  - key: POSTGRESS_DATABASE_NAME
+      fromDatabase:
+        name: database
+        property: database
+  - key: POSTGRESS_DATABASE_USERNAME
+      fromDatabase:
+        name: database
+        property: user
+  - key: POSTGRESS_DATABASE_PASSWORD
+      fromDatabase:
+        name: database
+        property: password
