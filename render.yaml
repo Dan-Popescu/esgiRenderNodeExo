@@ -9,7 +9,7 @@ services:
     branch: main
     buildCommand: npm install
     startCommand: npm run start
-  - envVars:
+    envVars:
       - key: DB_CONNECTION_STRING
       fromDatabase:
         name: esgiRenderNodeExoDb
