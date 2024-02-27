@@ -1,30 +1,20 @@
 services:
-  # A Docker web service
+  # A web service
   - type: web
-    name: webdis
-    runtime: docker
-    plan: individual
+    name: esgiRenderNodeExo
+    runtime: node
+    region: frankfurt
+    plan: free
     repo: https://github.com/Dan-Popescu/esgiRenderNodeExo
-    rootDir: webdis
+    branch: main
+    buildCommand: npm install
+    startCommand: npm run start
+    envVars:
+      - key: DB_CONNECTION_STRING
+      fromDatabase:
+        name: esgiRenderNodeExoDb
+        property: connectionString
 
 databases:
-  - name: database
-    databaseName: database 
-    user: dbManager 
-
-  - key: POSTGRESS_DATABASE_HOST
-      fromDatabase:
-        name: database
-        property: host
-  - key: POSTGRESS_DATABASE_NAME
-      fromDatabase:
-        name: database
-        property: database
-  - key: POSTGRESS_DATABASE_USERNAME
-      fromDatabase:
-        name: database
-        property: user
-  - key: POSTGRESS_DATABASE_PASSWORD
-      fromDatabase:
-        name: database
-        property: password
+  - name: esgiRenderNodeExoDb
+    region: frankfurt
