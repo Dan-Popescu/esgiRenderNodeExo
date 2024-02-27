@@ -11,10 +11,11 @@ services:
     startCommand: npm run start
     envVars:
       - key: DB_CONNECTION_STRING
-      fromDatabase:
-        name: esgiRenderNodeExoDb
-        property: connectionString
+        fromDatabase:
+          name: esgiRenderNodeExoDb
+          property: connectionString
 
 databases:
   - name: esgiRenderNodeExoDb
     region: frankfurt
+    plan: free
